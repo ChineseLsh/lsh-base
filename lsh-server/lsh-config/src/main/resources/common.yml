@@ -1,0 +1,46 @@
+---
+spring:
+  sleuth:
+    sampler:
+      percentage: 1
+  zipkin:
+    base-url: http://111.231.119.35:9411
+    sender:
+      type: WEB
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  messages:
+    encoding: UTF-8
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+  rabbitmq:
+    password: 123456
+    port: 5672
+    host: 111.231.119.35
+    username: admin
+server:
+  tomcat:
+    uri-encoding: UTF-8
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+ribbon:
+  ConnectTimeout: 30000
+  ReadTimeout: 120000
+message:
+  queue:
+    footprint: queue.footprint
+feign:
+  hystrix:
+    enabled: true
